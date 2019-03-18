@@ -71,6 +71,6 @@ class FieldElement
 
   def field_element_validation!(operand)
     raise 'Must provide a FieldElement' unless operand.is_a?(FieldElement)
-    raise 'Summands must have the same primes' if prime != operand.prime
+    raise 'Operands must have the same primes' if prime != operand.prime
   end
 end
