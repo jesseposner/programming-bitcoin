@@ -30,7 +30,7 @@ class Point
     # summand + I == summand
     return summand if self.point_at_infinity?
     # P + (-P) == I
-    return point_at_infinity if (x == summand.x) && (y != summand.y)
+    return point_at_infinity if (x == summand.x) && (-y == summand.y)
 
     return null
   end
