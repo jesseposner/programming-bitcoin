@@ -32,7 +32,24 @@ class Point
     # P + (-P) == I
     return point_at_infinity if (x == summand.x) && (-y == summand.y)
 
-    return null
+    slope = if x == summand.x && y == summand.y
+              # dy/dx of y_2 = x_3 + ax + b
+              (3 * x**2 + a).fdiv(2 * y)
+            elsif x != summand.x
+              # Slope of line between the two points.
+              (y - summand.y).fdiv(x - summand.x)
+            end
+
+    # Find where the line intersects the curve at a third point.
+    x_at_third_intersection = slope**2 - summand.x - x
+    y_at_third_intersection = slope * (x_at_third_intersection - summand.x) + summand.y
+    # Find the inverse point
+    inverse_of_y_at_third_intersection = -y_at_third_intersection
+
+    Point.new(x: x_at_third_intersection,
+              y: inverse_of_y_at_third_intersection,
+              a: a,
+              b: b)
   end
 
   def point_on_curve?
