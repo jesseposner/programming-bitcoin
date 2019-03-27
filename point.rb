@@ -25,11 +25,11 @@ class Point
   end
 
   def +(summand)
-    # self + I = self
+    # self + I == self
     return self if summand.point_at_infinity?
-    # summand + I = summand
+    # summand + I == summand
     return summand if self.point_at_infinity?
-    # P + (-P) = I
+    # P + (-P) == I
     return point_at_infinity if (x == summand.x) && (y != summand.y)
 
     return null
