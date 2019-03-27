@@ -52,6 +52,14 @@ class Point
               b: b)
   end
 
+  def *(int)
+    result = point_at_infinity
+
+    int.times { result = result + self }
+
+    result
+  end
+
   def point_on_curve?
     @_point_on_curve ||= (
       point_at_infinity? ||
