@@ -57,7 +57,7 @@ class FieldElement
     # int / divisor == int * (divisor ** -1) * 1
     # int / divisor == int * (divisor ** -1) * (divisor ** (prime - 1)) % prime
     # int / divisor == int * (divisor ** (prime - 2)) % prime
-    multiplicative_inverse = (divisor ** (prime - 2)) % prime
+    multiplicative_inverse = (divisor.to_i ** (prime - 2)) % prime
     int_quotient           = (int * multiplicative_inverse) % prime
 
     FieldElement.new(int: int_quotient, prime: prime)
