@@ -68,5 +68,10 @@ class Point
     false
   end
 
+  def -@
+    Point.new(x: x,
+              y: -y,
+              a: a,
+              b: b)
   end
 end
