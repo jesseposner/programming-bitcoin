@@ -67,6 +67,14 @@ class FieldElement
     @_identity_element ||= FieldElement.new(int: 1, prime: prime)
   end
 
+   def -@
+     FieldElement.new(int: -int, prime: prime)
+   end
+
+   def to_i
+     int % prime
+   end
+
   private
 
   def field_element_validation!(operand)
