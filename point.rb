@@ -16,8 +16,6 @@ class Point
   end
 
   def ==(comparand)
-    point_validation!(comparand)
-
     (x == comparand.x) &&
     (y == comparand.y) &&
     (a == comparand.a) &&
@@ -83,15 +81,5 @@ class Point
     )
   end
 
-  private
-
-  def point_validation!(operand)
-    unless operand.is_a?(Point)
-      raise 'Must provide a FieldElement'
-    end
-
-    unless (a == operand.a) && (b == operand.b)
-      raise 'Operands must be on the same curve'
-    end
   end
 end
