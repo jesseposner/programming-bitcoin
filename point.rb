@@ -24,9 +24,9 @@ class Point
 
   def +(summand)
     # self + I == self
-    return self if summand.point_at_infinity?
+    return self if summand.zero?
     # summand + I == summand
-    return summand if self.point_at_infinity?
+    return summand if self.zero?
     # P + (-P) == I
     return point_at_infinity if (x == summand.x) && (-y == summand.y)
 
@@ -51,7 +51,7 @@ class Point
   end
 
   def *(int)
-    result = point_at_infinity
+    result = 0
 
     int.times { result = result + self }
 
@@ -60,25 +60,12 @@ class Point
 
   def point_on_curve?
     @_point_on_curve ||= (
-      point_at_infinity? ||
       y_2 == x_3 + ax + b
     )
   end
 
-  def point_at_infinity?
-    @_is_point_at_infinity ||= (
-      x == Float::INFINITY &&
-      y == Float::INFINITY
-    )
-  end
-
-  def point_at_infinity
-    @_point_at_infinity ||= Point.new(
-      x: Float::INFINITY,
-      y: Float::INFINITY,
-      a: a,
-      b: b
-    )
+  def zero?
+    false
   end
 
   end
