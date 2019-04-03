@@ -31,8 +31,8 @@ class Point
     return point_at_infinity if (x == summand.x) && (-y == summand.y)
 
     slope = if x == summand.x && y == summand.y
-              # dy/dx of y_2 = x_3 + ax + b
               (3 * x**2 + a).fdiv(2 * y)
+              # dy/dx of y_2 == x_3 + ax + b
             elsif x != summand.x
               # Slope of line between the two points.
               (y - summand.y).fdiv(x - summand.x)
